@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <title>Atividade 04</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container">
+            <div class="jumbotron">
+                <h3> Atividade 4 </h3>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <form id="formulario" >
+                        <div class="row">
+                          <div class="col">
+                                <h5>Valor do produto</h5>
+                                <button value="" type="button" onclick="calcularTroco()" class="btn btn-success btn-lg btn-block btn-sm">Clique para digitar o valor do produto</button>
+                          </div>
+                          
+                        </div>
+                        
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-dark" role="alert">
+                                Valor do troco: <div id="troco"></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="formulario" >
+                        <div class="row">
+                          <div class="col">
+                                <h5>Seu salário</h5>
+                                <button value="calcularSalario" type="button" onclick="calcularSalario()" class="btn btn-success btn-lg btn-block btn-sm">Clique para Calcular Salario</button>
+                          </div>
+                        </div>
+
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-dark" role="alert">
+                                Você possui: <div id="salario"></div> salario(s) minimos.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="formulario" >
+                        <div class="row">
+                          <div class="col">
+                                <h5>Graus Celsius - °C </h5>
+                                <button value="converterTermperatura" type="button" onclick="converterTermperatura()" class="btn btn-success btn-lg btn-block btn-sm">Clique para Converter Temperatura</button>
+                          </div>
+                        </div>
+                        
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-dark" role="alert">
+                                Temperatura em Fahrenheit:  <div id="Fahrenheit"></div> °F 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p></p>
+
+            <div class="card">
+                <div class="card-body">
+                    <form id="formulario" >
+                        <div class="row">
+                          <div class="col">
+                                <h5>Horas trabalhadas</h5>
+                                <button value="calcularHora" type="button" onclick="calcularHora()" class="btn btn-success btn-lg btn-block btn-sm">Clique para Calcular Salario Bruto</button>
+                          </div>
+                          
+                        </div>
+            
+                        
+                    </form>
+                    <div class="row">
+                        <div class="col">
+                            <div class="alert alert-dark" role="alert">
+                                Salario Bruto <div id="salarioBruto"></div> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script>
+        function calcularTroco(){
+            var valorProduto = prompt(" Digite o valor do produto");
+            var valorCliente = prompt(" Digite o valor do cliente");
+            var valorInsuficiente = "Valor do pagamento insuficiente!!";
+            var SemTroco = "Não há troco!!";
+            var valorTroco = parseFloat(valorProduto) - parseFloat(valorCliente);
+
+            if(valorProduto > valorCliente){
+                alert(valorInsuficiente);
+            }if (valorProduto == valorCliente){
+                alert(SemTroco);
+            }if(valorProduto < valorCliente){
+                //alert(parseFloat(valorTroco));
+                document.getElementById("troco").innerHTML = valorTroco;
+            }
+            
+        }
+
+        function calcularSalario(){
+            var valorSalario = prompt("Digite o valor do seu salário");
+            var salarioMinimo = parseFloat(1.045);
+            var contador = parseInt(0);
+
+            if(valorSalario == salarioMinimo){
+                contador++;
+                alert(contador);
+                return
+            }
+            if(valorSalario > salarioMinimo){
+                valorSalario = parseFloat(valorSalario) / parseFloat(salarioMinimo);
+                
+                //alert(valorSalario.toFixed(0));
+                document.getElementById("salario").innerHTML = valorSalario.toFixed(0);
+                return
+            }
+          
+        }
+
+        function converterTermperatura(){
+            var temperaturaCelsius = prompt("Digite a temperatura em graus celsios");
+            var temperaturaFahrenheit = parseFloat((temperaturaCelsius * 9/5)+32);
+
+            document.getElementById("Fahrenheit").innerHTML = temperaturaFahrenheit;
+        }
+
+        function calcularHora(){
+            var horas = prompt("Digite o número de horas trabalhadas");
+            var hExtras = prompt("Digite o número de horas extras");
+
+            var resultado = parseFloat((horas * 10) + (hExtras * 15));
+
+            document.getElementById("salarioBruto").innerHTML = resultado;
+        }
+
+    </script>
+</html>
